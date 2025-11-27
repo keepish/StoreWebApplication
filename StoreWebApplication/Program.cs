@@ -1,7 +1,12 @@
+using StoreWebApplication.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<Ispp2108Context>(); // +
+builder.Services.AddSession(); // +
 
 var app = builder.Build();
 
@@ -13,7 +18,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseRouting();
 
+app.UseAuthentication(); //+
 app.UseAuthorization();
+app.UseSession(); // +
 
 app.MapStaticAssets();
 app.MapRazorPages()
