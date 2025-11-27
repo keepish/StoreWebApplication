@@ -38,13 +38,8 @@ namespace StoreWebApplication.Pages
 
         public IActionResult OnPostGuestAsync()
         {
-            HttpContext.Session.SetString("UserRole", "Guest");
-            return RedirectToPage("./Index");
-        }
-
-        public IActionResult OnGetLogout()
-        {
             HttpContext.Session.Clear();
+            HttpContext.Session.SetString("UserRole", "Guest");
             return RedirectToPage("./Index");
         }
     }
